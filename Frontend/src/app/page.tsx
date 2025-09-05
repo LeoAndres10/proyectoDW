@@ -27,7 +27,7 @@ export default function Home() {
   return (
     <div className="font-sans flex flex-col items-center justify-center min-h-screen p-8">
       {username && (
-        <p className="text-lg mb-4">👋 Bienvenido, {username}!</p>
+        <p className="text-lg mb-4">Bienvenido, {username}!</p>
       )}
 
       <button
