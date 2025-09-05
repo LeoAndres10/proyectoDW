@@ -15,7 +15,7 @@ export default function LoginPage() {
 
     if (username === "admin" && password === "1234") {
       localStorage.setItem("token", "fake-token-1234");
-      localStorage.setItem("username", username); // 👈 Guardamos el usuario
+      localStorage.setItem("username", username); //Guardamos el usuario
       router.push("/");
     } else {
       setError("Usuario o contraseña incorrectos");
