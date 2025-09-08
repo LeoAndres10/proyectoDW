@@ -1,42 +1,35 @@
-"use client";
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+  'use client'
+import Image from "next/image";
+import Link from "next/link";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Page from "./(general)/login/page";
+import InicioAlumno from "./(general)/InicioAlumno/page";
 
-export default function Home() {
-  const router = useRouter();
-  const [username, setUsername] = useState<string | null>(null);
+  import ReactDOM from 'react-dom/client';
+  import React from 'react';
+import { Plantilla } from "./Modelos/Plantilla";
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    const storedUser = localStorage.getItem("username");
+ const Home=()=> {
 
-    if (!token) {
-      router.push("/login");
-    } else {
-      setUsername(storedUser);
-    }
-  }, [router]);
+  
+  
+      
+    return (
+ <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
+      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("username");
-    router.push("/login");
-  };
+        <h1>Pagina Inicial</h1>
 
-  return (
-    <div className="font-sans flex flex-col items-center justify-center min-h-screen p-8">
-      {username && (
-        <p className="text-lg mb-4">Bienvenido, {username}!</p>
-      )}
-
-      <button
-        onClick={handleLogout}
-        className="bg-red-500 text-white p-2 rounded mt-4"
-      >
-        Cerrar sesión
-      </button>
+        <Link href="/login" className="btn btn-info">Ir a la pagina de Login</Link>
+      
+      </main>
+   
     </div>
-  );
-}
+    );
+    
+  }
+  
 
+
+export default Home;
