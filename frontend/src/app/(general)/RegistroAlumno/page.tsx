@@ -14,8 +14,8 @@ export default function RegistroAlumno() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!nombreAlumno || !contraseña || !modulo || !estado) {
-      setMensaje('⚠️ Todos los campos son obligatorios');
+    if (!nombreAlumno || !contraseña) {
+      setMensaje('Todos los campos son obligatorios');
       return;
     }
 
