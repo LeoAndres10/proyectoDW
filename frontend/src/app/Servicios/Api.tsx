@@ -27,4 +27,16 @@ const response= await axios.post(`${apiURL}/api/alumnos`, userData);
         
 
     }
+    export async function registroMaestro(userData: { nombreAlumno: string, contraseña: string, modulos: string, materias:string, estado: string }) {
+    try{
+
+     
+const response= await axios.post(`${apiURL}/api/maestros`, userData);
+  
+        return response.data;
+      } catch(error){
+        console.log(error)
+    }
+    
+  }
    

@@ -78,8 +78,15 @@ const Page = () => {
             onClick={() => router.push('/RegistroAlumno')}
             className="text-blue-500 hover:underline"
           >
-            ¿Nuevo usuario? Regístrate
+            ¿Nuevo usuario Alumno? Regístrate
           </button>
+          <button 
+            onClick={() => router.push('/RegistroMaestro')}
+            className="text-blue-500 hover:underline"
+          >
+            ¿Nuevo usuario Maestro? Regístrate
+          </button>
+          
         </div>
       </div>
     </div>
