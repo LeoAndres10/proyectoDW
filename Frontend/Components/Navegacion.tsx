@@ -10,7 +10,7 @@ export default function Navegacion() {
     <div>
      <nav>
       <Link href="/">Inicio</Link>
-      <Link href="/login">Login</Link>
+      <Link href="/login">Login</Link> 
     </nav>
     </div>
   )
