@@ -11,9 +11,6 @@ export default function Navegacion() {
      <nav>
       <Link href="/">Inicio</Link>
       <Link href="/login">Login</Link>
-      <Link href="/InicioAlumno">Inicio Alumno</Link>
-      <Link href="/InicioMaestro">Inicio Maestro</Link>
-      <Link href="/InicioAdmin">Inicio Administrador</Link>
     </nav>
     </div>
   )
