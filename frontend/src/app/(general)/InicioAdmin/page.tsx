@@ -5,12 +5,7 @@ import { useEffect } from 'react';
 export default function InicioAdmin() {
   const router = useRouter();
 
-  useEffect(() => {
-    const user = localStorage.getItem('user');
-    if (user !== 'Admin') {
-      router.replace('/login');
-    }
-  }, [router]);
+  
 
   const handleLogout = () => {
     localStorage.removeItem('user');

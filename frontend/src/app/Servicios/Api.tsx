@@ -1,35 +1,18 @@
+// archivo api.ts o similar
 import axios from "axios";
 
 const apiURL = "http://localhost:5000";
 
 export async function login(userData: { nombreAlumno: string, contraseña: string }) {
-    try{
+  try {
+    const response = await axios.post(`${apiURL}/login`, userData);
+    return response.data; 
+  } catch (error) {
+    console.error(error);
+    throw error; 
+  }
 
-     
-const response= await axios.post(`${apiURL}/login`, userData);
-  
-if (response.data.success===true) {
-        alert('Login exitosoo');
-        return response.data;
-      }else if (response.data.noUser) {
-        return alert('Usuario no encontrado'), window.location.reload();
-         
-      }
-       else {
-       return alert('Credenciales incorrectas'), window.location.reload();
-         
-       
-      }
-      
-    }
-    catch(error){
-        console.log(error)
-    }
-    
-        
-
-    }
-
+}
   export async function registro(userData: { nombreAlumno: string, contraseña: string, modulo: string, estado: string }) {
     try{
 

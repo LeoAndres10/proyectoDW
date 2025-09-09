@@ -1,43 +1,48 @@
 'use client'
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-
+import { login } from '@/app/Servicios/Api';
+import InicioAdmin from '../InicioAdmin/page';
 const Page = () => {
   const [nombreAlumno, setNombreAlumno] = useState('');
   const [contraseña, setContraseña] = useState('');
   const [mensaje, setMensaje] = useState('');
   const router = useRouter();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+ const loginActualizado = async (e: { preventDefault: () => void; }) => {
+    e.preventDefault()
+    setMensaje('')
 
-    if (nombreAlumno === '' || contraseña === '') {
-      setMensaje('Todos los campos son necesarios');
-      return;
+    try {
+      const data = await login({ nombreAlumno, contraseña })
+
+      if (data.success===true && data.noUser===false) {
+        setMensaje('Login Exitoso')
+        alert('Login exitoso')
+        router.push('/InicioAlumno')  
+      } else if (data.noUser===true && data.success===false) {
+        setMensaje('Login Exitoso')
+        alert('Login Exitoso')
+        router.push('/InicioMaestro')
+      } else if (data.ad===true && data.success===true && data.noUser===true) {
+         setMensaje('Login Exitoso')
+         alert('Login Exitoso')
+        router.push('/InicioAdmin')
+      }else{
+        setMensaje('Credenciales incorrectas')
+      }
+    } catch (err) {
+      setMensaje('Error de conexión')
     }
+  }
 
-    //Usuario admin de prueba
-    const defaultUser = {
-      username: 'admin',
-      password: 'admin123',
-    };
-
-    if (nombreAlumno === defaultUser.username && contraseña === defaultUser.password) {
-      localStorage.setItem('user', 'Admin')
-      setTimeout(() => {
-        router.push('/InicioAdmin'); 
-      }, 1000);
-    } else {
-      setMensaje('Usuario o contraseña incorrectos'); //Datos incorrectos
-    }
-  };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="w-full max-w-sm bg-white rounded-2xl shadow-lg p-6">
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Iniciar Sesión</h2>
         
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={loginActualizado} className="space-y-4">
           <div>
             <input
               type="text"

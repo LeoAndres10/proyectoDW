@@ -30,7 +30,7 @@ app.post('/login', async(req,res)=> {
       expiresIn: '1h'
     });
     if(tokenA){
-        return res.json({success:true, message: 'Login exitoso' ,data:alumno });
+        return res.json({success:true,noUser:false, message: 'Login exitoso' ,data:alumno });
     
         }else{
             return res.json({success:false, message: 'Contraseña incorrecta', data:alumno });
@@ -48,13 +48,13 @@ app.post('/login', async(req,res)=> {
         });      
        
         if(tokenM){
-           return res.json({ success:true, message: 'Login exitoso',data: maestro });
+           return res.json({ad:true, noUser:true, success:false, message: 'Login exitoso',data: maestro });
         
             }else{
-                return res.json({success:false, message: 'Contraseña incorrecta', data:maestro });
+                return res.json({ ad: false, success:false, message: 'Contraseña incorrecta', data:maestro });
             }
         }else{
-        return res.json({success:false, message: 'Usuario no encontrado' ,data:maestro });
+        return res.json({ad: false,success:false, message: 'Usuario no encontrado' ,data:maestro });
         } 
         } 
         else if(administrador) {
@@ -65,7 +65,7 @@ app.post('/login', async(req,res)=> {
         });
         
         if(tokenAd){
-           return res.json({success:true, message: 'Login exitoso', data:administrador });
+           return res.json({ad:true,success:true, noUser:true, message: 'Login exitoso', data:administrador });
         
             }else{
                 return res.json({success:false,message: 'Contraseña incorrecta', data:administrador});
