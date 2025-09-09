@@ -19,18 +19,8 @@ export async function login(userData: { nombreAlumno: string, contraseña: strin
      
 const response= await axios.post(`${apiURL}/api/alumnos`, userData);
   
-if (response.data.success===true) {
-        alert('Login exitosoo');
         return response.data;
-      }
-       else {
-       return alert('Credenciales incorrectas'), window.location.reload();
-         
-       
-      }
-      
-    }
-    catch(error){
+      } catch(error){
         console.log(error)
     }
     
