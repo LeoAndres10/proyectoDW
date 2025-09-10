@@ -3,7 +3,7 @@ const sequelize = require('../Conexion/db');
 
 const Administrador = sequelize.define('administrador', {
     
-    nombreAdministrador: {
+    nombreAlumno: {
         type: DataTypes.STRING
     },
 

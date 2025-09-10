@@ -3,7 +3,7 @@ const sequelize = require('../Conexion/db');
 
 const Maestro = sequelize.define('maestro', {
     
-    nombreMaestro: {
+    nombreAlumno: {
         type: DataTypes.STRING
     },
     contraseña: {
