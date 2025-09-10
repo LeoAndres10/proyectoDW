@@ -1,7 +1,8 @@
 'use client'
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-
+// import Maestro from './Mementos/maestro/Maestro'; // Ensure the file exists or correct the path
+       
 const Page = () => {
   const [nombreAlumno, setNombreAlumno] = useState('');
   const [contraseña, setContraseña] = useState('');
@@ -10,6 +11,7 @@ const Page = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
 
     if (nombreAlumno === '' || contraseña === '') {
       setMensaje('Todos los campos son necesarios');
@@ -31,6 +33,12 @@ const Page = () => {
       setMensaje('Usuario o contraseña incorrectos'); //Datos incorrectos
     }
   };
+
+// ...existing code...
+function handleMaestroLogin(event: React.MouseEvent<HTMLButtonElement>): void {
+  throw new Error('Function not implemented.');
+}
+// ...existing code...
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
@@ -63,7 +71,9 @@ const Page = () => {
             Iniciar Sesión
           </button>
         </form>
-
+        <button type="button" onClick={handleMaestroLogin} className="btn-maestro">
+            Inicio Maestro
+        </button>
         {mensaje && (
           <p className="text-center mt-4 text-sm text-red-500">{mensaje}</p>
         )}
